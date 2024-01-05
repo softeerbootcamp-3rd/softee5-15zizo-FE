@@ -19,6 +19,7 @@ export default class Component {
   }
 
   render() {
+    console.log(this.target?.id, "render");
     const { target } = this;
 
     const newNode = target.cloneNode(true);
@@ -37,11 +38,6 @@ export default class Component {
 
     this.prevTemplate = currentTemplate;
     requestAnimationFrame(() => this.mounted());
-  }
-
-  setState(newState) {
-    this.$state = { ...this.$state, ...newState };
-    this.render();
   }
 
   // executed after component mount: attach dom event listeners & add child components
@@ -66,10 +62,6 @@ function updateAttributes(oldNode, newNode) {
 }
 
 function updateElement(parent, newNode, oldNode) {
-  console.log("---------------");
-  console.log(parent.id);
-  console.log(oldNode?.innerHTML);
-  console.log(newNode?.innerHTML);
   if (!newNode && oldNode) return oldNode.remove();
   if (newNode && !oldNode) return parent.appendChild(newNode);
   if (newNode instanceof Text && oldNode instanceof Text) {
