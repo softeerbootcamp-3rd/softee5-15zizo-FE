@@ -2,6 +2,7 @@ export default class Component {
   target;
   props;
   state;
+  prevTemplate;
 
   constructor(target, props) {
     this.target = target;
@@ -21,15 +22,20 @@ export default class Component {
     const { target } = this;
 
     const newNode = target.cloneNode(true);
-    newNode.innerHTML = this.template();
 
-    const oldChildNodes = [...target.childNodes];
-    const newChildNodes = [...newNode.childNodes];
-    const max = Math.max(oldChildNodes.length, newChildNodes.length);
-    for (let i = 0; i < max; i++) {
-      updateElement(target, newChildNodes[i], oldChildNodes[i]);
+    const currentTemplate = this.template();
+    newNode.innerHTML = currentTemplate;
+
+    if (currentTemplate !== this.prevTemplate) {
+      const oldChildNodes = [...target.childNodes];
+      const newChildNodes = [...newNode.childNodes];
+      const max = Math.max(oldChildNodes.length, newChildNodes.length);
+      for (let i = 0; i < max; i++) {
+        updateElement(target, newChildNodes[i], oldChildNodes[i]);
+      }
     }
 
+    this.prevTemplate = currentTemplate;
     requestAnimationFrame(() => this.mounted());
   }
 
@@ -60,6 +66,10 @@ function updateAttributes(oldNode, newNode) {
 }
 
 function updateElement(parent, newNode, oldNode) {
+  console.log("---------------");
+  console.log(parent.id);
+  console.log(oldNode?.innerHTML);
+  console.log(newNode?.innerHTML);
   if (!newNode && oldNode) return oldNode.remove();
   if (newNode && !oldNode) return parent.appendChild(newNode);
   if (newNode instanceof Text && oldNode instanceof Text) {
