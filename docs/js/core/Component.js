@@ -2,6 +2,7 @@ export default class Component {
   target;
   props;
   state;
+  prevTemplate;
 
   constructor(target, props) {
     this.target = target;
@@ -18,24 +19,25 @@ export default class Component {
   }
 
   render() {
+    console.log(this.target?.id, "render");
     const { target } = this;
 
     const newNode = target.cloneNode(true);
-    newNode.innerHTML = this.template();
 
-    const oldChildNodes = [...target.childNodes];
-    const newChildNodes = [...newNode.childNodes];
-    const max = Math.max(oldChildNodes.length, newChildNodes.length);
-    for (let i = 0; i < max; i++) {
-      updateElement(target, newChildNodes[i], oldChildNodes[i]);
+    const currentTemplate = this.template();
+    newNode.innerHTML = currentTemplate;
+
+    if (currentTemplate !== this.prevTemplate) {
+      const oldChildNodes = [...target.childNodes];
+      const newChildNodes = [...newNode.childNodes];
+      const max = Math.max(oldChildNodes.length, newChildNodes.length);
+      for (let i = 0; i < max; i++) {
+        updateElement(target, newChildNodes[i], oldChildNodes[i]);
+      }
     }
 
+    this.prevTemplate = currentTemplate;
     requestAnimationFrame(() => this.mounted());
-  }
-
-  setState(newState) {
-    this.$state = { ...this.$state, ...newState };
-    this.render();
   }
 
   // executed after component mount: attach dom event listeners & add child components
