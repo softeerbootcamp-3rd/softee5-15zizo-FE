@@ -56,8 +56,8 @@ export default class NameRegister extends Component{
         const nextBtn = document.querySelector('[data-component="next-btn"]');
 
         input.oninput = (e) =>{
-            if(e.target.value.length!=0){
-                this.state.name = e.target.value;
+            this.state.name = e.target.value;
+            if(this.state.name!=0){
                 nextBtn.classList.remove("disabled");
                 nextBtn.classList.add("clicked");
             }else{
