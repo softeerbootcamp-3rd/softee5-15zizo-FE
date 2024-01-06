@@ -56,14 +56,7 @@ export default class NameRegister extends Component{
         const nextBtn = document.querySelector('[data-component="next-btn"]');
 
         input.oninput = (e) =>{
-            this.state.name = e.target.value;
-            if(this.state.name!=0){
-                nextBtn.classList.remove("disabled");
-                nextBtn.classList.add("clicked");
-            }else{
-                nextBtn.classList.remove("clicked");
-                nextBtn.classList.add("disabled");
-            }
+            this.setState({name: e.target.value});
         };
 
         input.onkeypress = (e) => {
@@ -74,13 +67,12 @@ export default class NameRegister extends Component{
 
         nextBtn.onclick = () =>{
             if(this.state.name.length!=0){
-                console.log("modal");
                 this.setState({modal:true});
             }
         }
 
-        const startBtn = document.querySelector('[data-component="start-btn"]');
-        if(startBtn){
+        if(this.state.modal){
+            const startBtn = document.querySelector('[data-component="start-btn"]');
             startBtn.onclick = () =>{
                 console.log("start");
             }
