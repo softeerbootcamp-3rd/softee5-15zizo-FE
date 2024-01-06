@@ -237,7 +237,6 @@ fieldset {
   }
 }
 
-
 .age-slider {
   padding: 100px 20px;
   display: flex;
@@ -248,6 +247,8 @@ fieldset {
   & > p {
     text-align: center;
     font-size: 20px;
+  }
+}
 
 div.gender-container {
   display: flex;
