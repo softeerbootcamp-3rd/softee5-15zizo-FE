@@ -13,7 +13,6 @@ export default class KakaoMap extends Component {
   }
 
   async onInterval() {
-    console.log("interval");
     // 새로 오더 목록 받아옴
     const orders = await getOrders();
 

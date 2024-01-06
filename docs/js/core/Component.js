@@ -19,7 +19,6 @@ export default class Component {
   }
 
   render() {
-    console.log(this.target?.id, "render");
     const { target } = this;
 
     const newNode = target.cloneNode(true);
@@ -56,7 +55,7 @@ function updateAttributes(oldNode, newNode) {
     oldNode.setAttribute(name, value);
   }
   for (const { name } of [...oldNode.attributes]) {
-    if (newNode.getAttribute(name) !== undefined) continue;
+    if (newNode.getAttribute(name) !== null) continue;
     oldNode.removeAttribute(name);
   }
 }
