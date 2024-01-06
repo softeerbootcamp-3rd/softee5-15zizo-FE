@@ -19,7 +19,6 @@ export default class Component {
   }
 
   render() {
-    console.log(this.target?.id, "render");
     const { target } = this;
 
     const newNode = target.cloneNode(true);
