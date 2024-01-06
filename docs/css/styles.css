@@ -237,6 +237,18 @@ fieldset {
   }
 }
 
+
+.age-slider {
+  padding: 100px 20px;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  & > p {
+    text-align: center;
+    font-size: 20px;
+
 div.gender-container {
   display: flex;
   width: 100%;
