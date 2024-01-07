@@ -230,6 +230,7 @@ div.stage-container{
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 100%;
 }
 
 div.input-name-container {
@@ -398,5 +399,59 @@ div.gender-container {
   & > div.selected {
     border-radius: 10px;
     background: #cde1fc;
+  }
+}
+
+.provide-location-container{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.80);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+
+  & > p.ask {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 32px;
+  }
+
+  & > p.description{
+    color: rgba(0, 0, 0, 0.60);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+  }
+}
+
+.circle-container{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  & .blur{
+    position: absolute;
+    width: 236px;
+    height: 236px;
+    z-index: 1;
+  }
+
+  & .inner{
+    position: absolute;
+    width: 153px;
+    height: 153px;
+    z-index: 2;
+  }
+
+  & .marker{
+    position: absolute;
+    width: 68.397px;
+    height: 83.596px;
+    z-index: 3;
   }
 }
