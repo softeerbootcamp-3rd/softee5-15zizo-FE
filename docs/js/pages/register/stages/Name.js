@@ -1,36 +1,34 @@
 import Component from "../../../core/Component.js";
 
-export default class NameRegister extends Component{
-    setup(){
-        this.state ={
-            name:"",
-            modal:false
-        };
-    }
+export default class NameRegister extends Component {
+  setup() {
+    this.state = {
+      name: "",
+      modal: false,
+    };
+  }
 
-    template(){
-        return `
-            <div class="stage-container">
-                <div class="name-container">
-                    <div class="question-container" style="text-align: center;">
-                        <p class="question">이름이 무엇인가요?</p>
-                        <div>
-                        <p class="description">저장 후엔 변경할 수 없습니다.</p>
-                        <p class="bold">프로필에 표시되는 이름입니다.</p>
-                        </div>
-                    </div>
-                    <div class="input-name-container">
-                        <input data-component="name-input" class="input-name" type="search" name="name" 
-                        placeholder="이름을 입력해주세요 (3~5자)" autofocus/>
-                    </div>
+  template() {
+    return `
+            <div class="register-content">
+                <div class="question-container">
+                    <p class="question">이름이 무엇인가요?</p>
+                    <p class="description">저장 후엔 변경할 수 없습니다.</p>
+                    <p class="bold">프로필에 표시되는 이름입니다.</p>
+                </div>
+                <div class="input-name-container">
+                    <input data-component="name-input" class="input-name" type="search" name="name" 
+                    placeholder="이름을 입력해주세요 (3~5자)" autofocus/>
                 </div>
                 <div class="next-button-container">
-                    <button data-component="next-btn" type="button" class="carting-button ${this.state.name.length>0?"clicked":"disabled"}" data-component="next-btn">다음</button>
+                    <button data-component="next-btn" type="button" class="carting-button ${
+                      this.state.name.length > 0 ? "clicked" : "disabled"
+                    }" data-component="next-btn">다음</button>
                 </div>
             </div>
             ${
-                this.state.modal?
-                `
+              this.state.modal
+                ? `
                 <div data-component="modal-back" class="modal-container">
                     <div class="modal modal-center">
                         <div class="hi-container">
@@ -46,42 +44,43 @@ export default class NameRegister extends Component{
                         </div>
                     </div>
                 </div>
-                `:""
+                `
+                : ""
             }
-        `
+        `;
+  }
+
+  mounted() {
+    const input = document.querySelector('[data-component="name-input"]');
+    const nextBtn = document.querySelector('[data-component="next-btn"]');
+
+    input.oninput = (e) => {
+      this.setState({ name: e.target.value });
+    };
+
+    input.onkeypress = (e) => {
+      if (e.keyCode === 13) {
+        nextBtn.click();
+      }
+    };
+
+    nextBtn.onclick = () => {
+      if (this.state.name.length != 0) {
+        this.setState({ modal: true });
+      }
+    };
+
+    if (this.state.modal) {
+      const startBtn = document.querySelector('[data-component="start-btn"]');
+      startBtn.onclick = () => {
+        this.props.proceed({ name: this.state.name });
+      };
+
+      const editBtn = document.querySelector('[data-component="edit-btn"]');
+      editBtn.onclick = () => {
+        this.setState({ modal: false });
+        input.focus();
+      };
     }
-
-    mounted(){
-        const input = document.querySelector('[data-component="name-input"]');
-        const nextBtn = document.querySelector('[data-component="next-btn"]');
-
-        input.oninput = (e) =>{
-            this.setState({name: e.target.value});
-        };
-
-        input.onkeypress = (e) => {
-            if(e.keyCode===13){
-                nextBtn.click();
-            }
-        }
-
-        nextBtn.onclick = () =>{
-            if(this.state.name.length!=0){
-                this.setState({modal:true});
-            }
-        }
-
-        if(this.state.modal){
-            const startBtn = document.querySelector('[data-component="start-btn"]');
-            startBtn.onclick = () =>{
-                console.log("start");
-            }
-    
-            const editBtn = document.querySelector('[data-component="edit-btn"]');
-            editBtn.onclick = () =>{
-                this.setState({modal: false});
-                input.focus();
-            }
-        }
-    }
+  }
 }
