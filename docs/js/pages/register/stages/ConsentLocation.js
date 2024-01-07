@@ -2,7 +2,11 @@ import Component from "../../../core/Component.js";
 import { postProfile } from "../../../utils/api.js";
 
 export default class ConsentLocationStage extends Component {
-  setup() {}
+  setup() {
+    this.state = {
+      complete: false,
+    };
+  }
 
   template() {
     return `
@@ -25,7 +29,9 @@ export default class ConsentLocationStage extends Component {
                 <img class="marker" src="./img/marker.svg" />
             </div>
             <div class="next-button-container">
-                <button data-component="next-btn" class="carting-button clicked">허용</button>
+                <button data-component="next-btn" class="carting-button ${
+                  this.state.complete ? "disabled" : "clicked"
+                }">허용</button>
             </div>
             </div>
         `;
@@ -33,8 +39,17 @@ export default class ConsentLocationStage extends Component {
 
   mounted() {
     const btn = document.querySelector('[data-component="next-btn"]');
+
     btn.onclick = () => {
-      postProfile(this.props.data);
+      if (!this.state.complete) {
+        this.setState({ complete: true });
+      }
     };
+
+    if (this.state.complete) {
+      // api 전송
+      postProfile(this.props.data);
+      this.props.proceed({ locationPermission: true });
+    }
   }
 }
