@@ -1,4 +1,6 @@
 import Component from "./core/Component.js";
+import RegisterPage from "./pages/register/register.js";
+import GenderStage from "./pages/register/stages/Description.js";
 
 export default class App extends Component {
   setup() {
@@ -6,16 +8,13 @@ export default class App extends Component {
   }
 
   template() {
-    return `<h1 style="transition: color 1s; color: ${
-      this.state.enabled ? "red" : "black"
-    }">Hello world</h1>`;
+    return `
+      <div data-component="container"></div>
+    `;
   }
 
   mounted() {
-    const title = this.target.querySelector("h1");
-    title.onclick = () => {
-      console.log(this.state.enabled);
-      this.setState({ enabled: !this.state.enabled });
-    };
+    const container = this.target.querySelector('[data-component="container"]');
+    new RegisterPage(container);
   }
 }
