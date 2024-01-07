@@ -16,3 +16,7 @@ export async function getOrders() {
   }
   return orders;
 }
+
+export async function postProfile(data){
+
+}
