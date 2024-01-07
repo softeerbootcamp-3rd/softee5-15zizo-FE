@@ -1,7 +1,10 @@
 import Component from "../../../core/Component.js";
+import { postProfile } from "../../../utils/api.js";
 
 export default class ConsentLocationStage extends Component{
-    
+    setup(){
+    }
+
     template(){
         return `
         <div class="stage-container">
@@ -21,13 +24,16 @@ export default class ConsentLocationStage extends Component{
                 <img class="marker" src="./img/marker.svg"/>
             </div>
             <div class="next-button-container">
-                <button class="carting-button clicked">허용</button>
+                <button data-component="next-btn" class="carting-button clicked">허용</button>
             </div>
         </div>
         `;
     }
 
     mounted(){
-        
+        const btn = document.querySelector('[data-component="next-btn"]');
+        btn.onclick = () =>{
+            postProfile(this.props.data);
+        }
     }
 }
