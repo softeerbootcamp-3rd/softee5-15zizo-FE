@@ -23,7 +23,7 @@ export default class Component {
 
     const newNode = target.cloneNode(true);
 
-    const currentTemplate = this.template();
+    const currentTemplate = this.template().replace(/>\s+</g, "><");
     newNode.innerHTML = currentTemplate;
 
     if (currentTemplate !== this.prevTemplate) {
