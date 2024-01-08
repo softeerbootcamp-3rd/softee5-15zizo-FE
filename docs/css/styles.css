@@ -90,6 +90,13 @@
   line-height: 20px;
 }
 
+.close-button {
+  font-size: 20px;
+  border: none;
+  color: #006ad8;
+  background-color: transparent;
+}
+
 .clicked {
   border: none;
   background: #006ad8;
@@ -859,4 +866,133 @@ div.gender-container {
   border-width: 10px;
   border-style: solid;
   border-color: #4098fc transparent transparent transparent;
+}
+
+p.chip {
+  text-align: center;
+  border-radius: 12px;
+  background: #cde1fc;
+  padding: 4px 12px;
+  color: #2f91fe;
+
+  &.dark {
+    border-radius: 15px;
+    border: 2px solid var(--Blue-one, #1c81f8);
+    background: #55a1f9;
+    color: white;
+  }
+}
+
+.profile-modal-header {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+
+  & > .profile {
+    border-radius: 50%;
+    width: 190px;
+    background-color: grey;
+    height: 190px;
+  }
+
+  & > p {
+    font-size: 30px;
+  }
+
+  & > .chips {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-self: stretch;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.profile-modal-card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-modal-card {
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  & > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 44px;
+    & > div {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+    & > div:first-child {
+      /* 제목 이미지 */
+      & > img {
+        height: 15px;
+        object-fit: contain;
+      }
+      & > p {
+        color: #000;
+        font-family: Pretendard;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 16px; /* 133.333% */
+      }
+    }
+    & > div:last-child {
+      /* 내용 단위 */
+      & > p:first-child {
+        color: #000;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 20px; /* 125% */
+      }
+      & > p:last-child {
+        color: #000;
+        font-family: Pretendard;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 16px; /* 133.333% */
+      }
+    }
+  }
+}
+
+.profile-modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.profile-modal {
+  border-radius: 20px 20px 0px 0px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(25px);
+  height: 90%;
+  width: 100%;
+  align-items: center;
+  overflow-y: auto;
+  justify-content: space-between;
 }
