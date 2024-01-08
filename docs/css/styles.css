@@ -857,7 +857,6 @@ p.chip {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
   gap: 12px;
 }
 
@@ -865,8 +864,7 @@ p.chip {
   padding: 20px 30px;
   display: flex;
   flex-direction: row;
-  width: 100%;
-  max-width: 300px;
+  width: 300px;
   align-items: center;
   justify-content: space-between;
   border-radius: 20px;
@@ -931,6 +929,8 @@ p.chip {
   box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(25px);
   height: 90%;
+  width: 100%;
+  align-items: center;
   overflow-y: auto;
   justify-content: space-between;
 }
