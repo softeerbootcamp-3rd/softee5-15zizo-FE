@@ -61,6 +61,12 @@ function updateAttributes(oldNode, newNode) {
 }
 
 function updateElement(parent, newNode, oldNode) {
+  if (
+    !(oldNode instanceof Text) &&
+    oldNode?.getAttribute("disable-rerender") === ""
+  )
+    return;
+
   if (!newNode && oldNode) return oldNode.remove();
   if (newNode && !oldNode) return parent.appendChild(newNode);
   if (newNode instanceof Text && oldNode instanceof Text) {
