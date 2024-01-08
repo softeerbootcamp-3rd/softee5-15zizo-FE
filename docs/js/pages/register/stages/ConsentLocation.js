@@ -56,15 +56,13 @@ export default class ConsentLocationStage extends Component {
         pos.lat = position.coords.latitude;
         pos.lng = position.coords.longitude;
 
-        console.log(pos);
-
         // api 전송
         (async () => {
           try {
-            postProfile({ ...this.props.data, ...pos }).then((res) => {
-              this.props.proceed();
-            });
+            postProfile({ ...this.props.data, ...pos });
+            this.props.proceed();
           } catch (e) {
+            // api 전송 실패 시 버튼 활성화
             this.setState({ complete: false });
           }
         })();
