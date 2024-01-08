@@ -50,7 +50,7 @@ export function ProfileCard(props) {
                       <p>성별</p>
                   </div>
                   <div class="option-data">
-                      <p class="data">${props.gender}}</p>
+                      <p class="data">${props.gender}</p>
                   </div>
                   </div>
               </div>
