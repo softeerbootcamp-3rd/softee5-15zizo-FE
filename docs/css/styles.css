@@ -506,6 +506,7 @@ div.gender-container {
 }
 
 .profile-container-backround {
+  max-width: 340px;
   display: flex;
   flex-direction: column;
   justify-items: center;
@@ -522,6 +523,7 @@ div.gender-container {
 }
 
 .profile-container {
+  backdrop-filter: blur(15px);
   display: flex;
   justify-content: center;
   width: 100%;
@@ -645,6 +647,55 @@ div.gender-container {
   }
 }
 
+.marker {
+  border-radius: 50%;
+  transition: transform 0.2s ease-out, position 0.2s ease-out;
+  width: 25px;
+  height: 25px;
+  transform-origin: 50% 90%;
+}
+
+.marker-large {
+  border-radius: 50%;
+  transform: scale(4);
+}
+
+.list-button {
+  position: fixed;
+  left: 50%;
+  bottom: 10%;
+  transform: translateX(-50%);
+}
+
+.current-pos-button {
+}
+
+.refresh-button {
+}
+
+.map-page-container {
+  width: 100%;
+  height: 100%;
+}
+
+.map-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.map-profile-card {
+  position: fixed;
+  height: 200px;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
 .time {
   height: 304px;
   padding: 20px;
@@ -736,6 +787,7 @@ div.gender-container {
     height: 15px;
   }
 }
+
 .tooltip::after {
   content: " ";
   position: absolute;
