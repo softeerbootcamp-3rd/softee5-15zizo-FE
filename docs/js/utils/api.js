@@ -8,8 +8,8 @@ export async function getOrders() {
   // type: 0->비활성화 1->차 2->뚜벅이
   for (let i = 0; i < 10; i++) {
     orders.push({
-      x: 33.450701 + Math.random(),
-      y: 126.570667 + Math.random(),
+      x: 33.450701 + Math.random() * 0.01,
+      y: 126.570667 + Math.random() * 0.01,
       id: i,
       type: i % 3,
     });
@@ -17,6 +17,4 @@ export async function getOrders() {
   return orders;
 }
 
-export async function postProfile(data){
-
-}
+export async function postProfile(data) {}
