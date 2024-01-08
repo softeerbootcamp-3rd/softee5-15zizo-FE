@@ -27,7 +27,7 @@ export default class RequestModal extends Component {
                 </div>`
                 : ``
             }
-            <button data-component="cancle-btn" class="time-button" type="button">요청 취소하기</button>
+            <button data-component="cancel-btn" class="time-button" type="button">요청 취소하기</button>
         </div>
         </div>
         `;
@@ -42,8 +42,8 @@ export default class RequestModal extends Component {
     }
 
     if (!this.state.tooltip) {
-      const cancleBtn = document.querySelector('[data-component="cancle-btn"]');
-      cancleBtn.onclick = () => {
+      const cancelBtn = document.querySelector('[data-component="cancel-btn"]');
+      cancelBtn.onclick = () => {
         console.log("cancel");
       };
     }
