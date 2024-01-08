@@ -38,6 +38,10 @@ export default class ConsentLocationStage extends Component {
   }
 
   mounted() {
+    const pos = {
+      lat: 0,
+      lng: 0,
+    };
     const btn = document.querySelector('[data-component="next-btn"]');
 
     btn.onclick = () => {
@@ -47,9 +51,24 @@ export default class ConsentLocationStage extends Component {
     };
 
     if (this.state.complete) {
-      // api 전송
-      postProfile(this.props.data);
-      this.props.proceed({ locationPermission: true });
+      // 현재 위치 가져오기
+      navigator.geolocation.getCurrentPosition((position) => {
+        pos.lat = position.coords.latitude;
+        pos.lng = position.coords.longitude;
+
+        console.log(pos);
+
+        // api 전송
+        (async () => {
+          try {
+            postProfile({ ...this.props.data, ...pos }).then((res) => {
+              this.props.proceed();
+            });
+          } catch (e) {
+            this.setState({ complete: false });
+          }
+        })();
+      });
     }
   }
 }
