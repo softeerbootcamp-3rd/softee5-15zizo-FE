@@ -1,9 +1,17 @@
-export function ProfileCard(data) {
+export function ProfileCard(props) {
   return `
           <div class="profile-container">
               <div class="profile-info">
                   <div class="profile-img-container"></div>
-                  <div class="name">${data.name}</div>
+                  <div class="name">${props.name}</div>
+                  ${
+                    props.button
+                      ? `<div class="profile-button-container">
+                    <button class="profile-button">카팅하기</button>
+                    </div>
+                    `
+                      : ``
+                  }
               </div>
               <div class="profile-line"></div>
               <div class="profile-option-list">
@@ -13,7 +21,7 @@ export function ProfileCard(data) {
                       <p>거리</p>
                   </div>
                   <div class="option-data">
-                      <p class="data">${data.distance}</p>
+                      <p class="data">${props.distance}</p>
                       <p class="unit">km</p>
                   </div>
                   </div>
@@ -23,7 +31,7 @@ export function ProfileCard(data) {
                       <p>나이</p>
                   </div>
                   <div class="option-data">
-                      <p class="data">${data.age}</p>
+                      <p class="data">${props.age}</p>
                       <p class="unit">세</p>
                   </div>
                   </div>
@@ -33,7 +41,7 @@ export function ProfileCard(data) {
                       <p>동행여부</p>
                   </div>
                   <div class="option-data">
-                      <p class="data">${data.company}</p>
+                      <p class="data">${props.company}</p>
                   </div>
                   </div>
                   <div class="profile-option">
@@ -42,7 +50,7 @@ export function ProfileCard(data) {
                       <p>성별</p>
                   </div>
                   <div class="option-data">
-                      <p class="data">${data.gender}}</p>
+                      <p class="data">${props.gender}}</p>
                   </div>
                   </div>
               </div>
