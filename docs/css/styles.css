@@ -640,3 +640,56 @@ div.gender-container {
     line-height: 20px;
   }
 }
+
+.profile-list-modal {
+  height: 727px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px 20px 0px 0px;
+  padding: 12px 0px;
+  background: #f9f9f9;
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);
+  gap: 29px;
+
+  & .profile-list-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  & .profile-title {
+    padding: 0px 20px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+
+    & > p {
+      color: #000;
+      font-family: Pretendard;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 28px; /* 116.667% */
+    }
+  }
+
+  & .profile-list {
+    width: 100%;
+    height: 611px;
+    padding: 12px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow: auto;
+  }
+}
+
+.home-indicator {
+  width: 70px;
+  height: 5px;
+  border-radius: 100px;
+  background: rgba(0, 0, 0, 0.2);
+}
