@@ -1,6 +1,5 @@
 import Component from "./core/Component.js";
-import RegisterPage from "./pages/register/register.js";
-import GenderStage from "./pages/register/stages/Description.js";
+import { getPage } from "./core/Router.js";
 
 export default class App extends Component {
   setup() {
@@ -15,6 +14,11 @@ export default class App extends Component {
 
   mounted() {
     const container = this.target.querySelector('[data-component="container"]');
-    new RegisterPage(container);
+
+    // router change event
+    window.onhashchange = () => new (getPage())(container);
+
+    // render current route
+    new (getPage())(container);
   }
 }
