@@ -4,7 +4,7 @@ export function ProfileCardBlue(props) {
   return `
     <div class="profile-container-backround">
         <img class="profile-arrow" src="./img/arrow.svg" />
-        ${ProfileCard({ ...props, button: true })}
+        ${ProfileCard({ ...props, color: blue })}
         </div>
     </div>
     `;

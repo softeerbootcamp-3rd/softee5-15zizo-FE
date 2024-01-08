@@ -4,14 +4,11 @@ export function ProfileCard(props) {
               <div class="profile-info">
                   <div class="profile-img-container"></div>
                   <div class="name">${props.name}</div>
-                  ${
-                    props.button
-                      ? `<div class="profile-button-container">
-                    <button class="profile-button">카팅하기</button>
-                    </div>
-                    `
-                      : ``
-                  }
+                  <div class="profile-button-container">
+                  <button class="profile-button ${
+                    props.color === "blue" ? "blue" : ""
+                  }">카팅하기</button>
+                  </div>
               </div>
               <div class="profile-line"></div>
               <div class="profile-option-list">
