@@ -73,7 +73,7 @@ export default class NameRegister extends Component {
     if (this.state.modal) {
       const startBtn = document.querySelector('[data-component="start-btn"]');
       startBtn.onclick = () => {
-        this.props.proceed({ name: this.state.name });
+        this.props.proceed({ nickName: this.state.name });
       };
 
       const editBtn = document.querySelector('[data-component="edit-btn"]');

@@ -4,6 +4,8 @@ import DescriptionStage from "./stages/Description.js";
 import GenderStage from "./stages/Gender.js";
 import CompanyStage from "./stages/Company.js";
 import NameRegister from "./stages/Name.js";
+import CarStage from "./stages/Car.js";
+import ConsentLocationStage from "./stages/ConsentLocation.js";
 
 export default class RegisterPage extends Component {
   setup() {
@@ -14,7 +16,9 @@ export default class RegisterPage extends Component {
       GenderStage,
       AgeStage,
       DescriptionStage,
+      CarStage,
       CompanyStage,
+      ConsentLocationStage,
     ];
   }
 
@@ -38,14 +42,16 @@ export default class RegisterPage extends Component {
   }
 
   mounted() {
+    console.log(this.state.data);
     const container = this.target.querySelector('[data-component="container"]');
     // render stage
     new this.stages[this.state.step](container, {
       proceed: (data) => {
         // 마지막 단계
         if (this.state.step === this.stages.length - 1) {
-          // TODO: 화면 전환 (라우팅 구현후 수정 예정)
+          // 성공시 화면 전환
           console.log("register complete");
+          window.location.hash = "/";
           return;
         }
 

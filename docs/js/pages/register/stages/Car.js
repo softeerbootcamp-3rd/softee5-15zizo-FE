@@ -50,7 +50,12 @@ export default class CarStage extends Component {
 
     const nextBtn = document.querySelector('[data-component="next-btn"]');
     nextBtn.onclick = () => {
-      this.props.proceed({ vehicle: this.state.vehicle });
+      this.props.proceed({ hasCar: vehicleToBoolean(this.state.vehicle) });
     };
   }
+}
+
+function vehicleToBoolean(v) {
+  if (v === "car") return true;
+  return false;
 }
