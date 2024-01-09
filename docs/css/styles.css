@@ -1105,7 +1105,7 @@ p.chip {
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
   }
   & .splash-main {
     padding: 20px 8px;
@@ -1128,5 +1128,47 @@ p.chip {
     font-style: normal;
     font-weight: 500;
     line-height: 20px; /* 125% */
+  }
+
+  & .splash-descriptions {
+    width: 100%;
+    gap: 28px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  & .description {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 20px;
+    gap: 8px;
+    color: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 150% */
+  }
+
+  & .description-main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px; /* 125% */
+    gap: 8px;
+
+    & > img {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+    }
   }
 }
