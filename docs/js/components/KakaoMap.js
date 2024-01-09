@@ -9,13 +9,9 @@ export default class KakaoMap extends Component {
   mounted() {}
 }
 
-export function typeToMarker(type) {
-  switch (type) {
-    case 1:
-    case 2:
-  }
-
-  return "/img/marker_car.png";
+export function typeToMarker(hasCar) {
+  if (hasCar) return "/img/marker_car.png";
+  return "/img/marker_walk.png";
 }
 
 export function createCustomMarker(order, onmousedown) {
