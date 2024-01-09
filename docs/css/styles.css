@@ -765,70 +765,111 @@ div.gender-container {
   z-index: 10;
 }
 
-.time {
-  height: 304px;
-  padding: 20px;
+.required {
+  height: 476px;
+  padding: 28px 20px;
   gap: 32px;
+  border-radius: 20px;
   background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(25px);
 
-  & .request-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 12px;
-    background: #cde1fc;
-    padding: 4px 12px;
-    color: #2f91fe;
-
-    & > p {
-      color: #2f91fe;
-      font-family: Pretendard;
-      font-size: 16px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: 20px; /* 125% */
-    }
-  }
-
-  & .time-container {
+  & .request-text {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-
-    & .time-img {
-      width: 60px;
-      height: 60px;
-    }
-
-    & > p {
-      color: #000;
-      font-family: Pretendard;
-      font-size: 40px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 44px; /* 110% */
-    }
-  }
-
-  & .time-button {
-    display: flex;
-    height: 56px;
-    width: 100%;
-    padding: 8px;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    border-radius: 16px;
-    color: #147bf9;
     text-align: center;
+    gap: 16px;
+    font-family: Pretendard;
     font-size: 16px;
     font-style: normal;
-    font-weight: 700;
-    border: none;
-    background-color: transparent;
+    font-weight: 500;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.6);
   }
+}
+
+.required-inner-container {
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.time {
+  height: 304px;
+  padding: 28px 20px;
+  gap: 32px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(25px);
+}
+
+.request-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  background: #cde1fc;
+  padding: 4px 12px;
+  color: #2f91fe;
+
+  & > p {
+    color: #2f91fe;
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px; /* 125% */
+  }
+}
+
+.time-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+
+  & .time-img {
+    width: 60px;
+    height: 60px;
+  }
+
+  & > p {
+    color: #000;
+    font-family: Pretendard;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 44px; /* 110% */
+  }
+}
+
+.row {
+  flex-direction: row;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.time-button {
+  display: flex;
+  height: 56px;
+  width: 100%;
+  padding: 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 16px;
+  color: #147bf9;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  border: none;
+  background-color: transparent;
 }
 
 .tooltip {
@@ -995,4 +1036,48 @@ p.chip {
   align-items: center;
   overflow-y: auto;
   justify-content: space-between;
+}
+
+.compact-profile {
+  width: 100%;
+  padding: 20px;
+  gap: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.16);
+
+  & .compact-profil-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 48px;
+    background-color: grey;
+  }
+
+  & > p {
+    color: rgba(0, 0, 0, 0.7);
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+  }
+
+  & .arrow-right {
+    width: 10px;
+    height: 16px;
+  }
+}
+
+.colored {
+  background: linear-gradient(
+    90deg,
+    #54cee9 0.18%,
+    #5ba3f8 53.18%,
+    #1f8aff 100.18%
+  );
+  color: white;
 }
