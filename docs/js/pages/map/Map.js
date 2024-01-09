@@ -188,7 +188,7 @@ export default class MapPage extends Component {
             this.state.location.lat,
             this.state.location.lng
           ),
-          content: createCustomMarker({ status: undefined }),
+          content: createCustomMarker({ status: "ME" }),
           xAnchor: 0.5,
           yAnchor: 0.5,
         });
@@ -355,9 +355,9 @@ export default class MapPage extends Component {
           new kakao.maps.LatLng(order.location.lat, order.location.lng)
         );
 
-        oldOrder.marker
-          .getContent()
-          .setAttribute("src", getImgFromStatus(oldOrder.status));
+        // 상태에 따라 변경
+        const content = oldOrder.marker.getContent();
+        content.setAttribute("src", getImgFromStatus(oldOrder.status));
         continue;
       }
 
@@ -428,7 +428,7 @@ export default class MapPage extends Component {
         order.marker.getContent().setAttribute("class", "marker");
         order.marker
           .getContent()
-          .setAttribute("src", "/img/marker_minimal.svg");
+          .setAttribute("src", getImgFromStatus(order.status));
         order.marker.setZIndex(1);
       }
     }

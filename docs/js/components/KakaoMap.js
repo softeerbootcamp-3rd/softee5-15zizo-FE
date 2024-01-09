@@ -19,14 +19,6 @@ export function createCustomMarker(order, onmousedown) {
   element.setAttribute("class", `marker`);
   element.setAttribute("src", getImgFromStatus(order.status));
 
-  // 상태
-  switch (order.status) {
-    case "REQUESTING":
-    case "RESPONDING":
-    case "MATCHED":
-      element.setAttribute("src", getImgFromStatus(order.status));
-  }
-
   element.onmousedown = onmousedown;
   return element;
 }
@@ -36,7 +28,9 @@ export function getImgFromStatus(status) {
     case "REQUESTING":
     case "RESPONDING":
     case "MATCHED":
-      return "/img/marker_minial_disabled.svg";
+      return "/img/marker_minimal_disabled.svg";
+    case "ME":
+      return "/img/marker_me.svg";
   }
   return "/img/marker_minimal.svg";
 }
