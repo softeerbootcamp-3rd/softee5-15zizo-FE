@@ -12,13 +12,19 @@ export default class GenderStage extends Component {
           <p class="number">1/5</p>
           <p class="question">카팅님의 성별은 무엇인가요?</p>
         </div>
-        <div class="gender-container">
-          <div data-component="F" ${
-            this.state.gender === "F" ? 'class="selected"' : ""
-          }>여성</div>
-          <div data-component="M" ${
-            this.state.gender === "M" ? 'class="selected"' : ""
-          }>남성</div>
+        <div class="two-option-container">
+          <div data-component="F" class="option ${
+            this.state.gender === "F" ? "selected" : ""
+          }">
+            <img src="./img/female.png"/>
+            <p>여성</p>
+          </div>
+          <div data-component="M" class="option ${
+            this.state.gender === "M" ? "selected" : ""
+          }">
+            <img src="./img/male.png"/>
+            <p>남성</p>
+          </div>
         </div>
       </div>
       <div class="next-button-container">
