@@ -1,3 +1,5 @@
+import { companyToString, genderToString } from "./ProfileCard.js";
+
 export default function ProfileModal(props) {
   const topCardData = [
     {
@@ -15,14 +17,14 @@ export default function ProfileModal(props) {
     {
       icon: "./img/option_gender.png",
       key: "성별",
-      value: props.gender,
+      value: genderToString(props.gender),
     },
   ];
   const bottomCardData = [
     {
       icon: "./img/option_company.png",
       key: "동행여부",
-      value: props.company,
+      value: companyToString(props.hasCompany, props.companyInfo),
     },
   ];
 
@@ -33,9 +35,12 @@ export default function ProfileModal(props) {
       <div class="profile-modal-content">
         <div class="profile-modal-header">
           <div class="profile"></div>
-          <p>${props.name}</p>
+          <p>${props.nickname}</p>
           <div class="chips">
-            ${props.tags.map((v) => `<p class="chip dark">${v}</p>`).join("")}
+            ${props.info
+              .split(" ")
+              .map((v) => `<p class="chip dark">${v}</p>`)
+              .join("")}
           </div>
         </div>
         <div class="profile-modal-card-container">

@@ -49,14 +49,15 @@ export async function httpPatch(url, body, signal) {
 async function getRes(url, options) {
   try {
     const res = await fetch(url, options);
-    if (res.status >= 400) {
+    if (res.status >= 403) {
       // 세션 없음
-      window.location.hash = "/register";
+      window.location.href = "/#/register";
       return undefined;
     }
+
     return res;
   } catch (e) {
-    window.location.hash = "/register";
-    return undefined;
+    window.location.href = "/#/register";
   }
+  return undefined;
 }

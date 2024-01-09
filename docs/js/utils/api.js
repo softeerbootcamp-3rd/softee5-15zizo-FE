@@ -1,5 +1,5 @@
 import { httpDelete, httpGet, httpPatch, httpPost } from "./http.js";
-const API_BASE_URL = "https://8c6e-221-149-4-114.ngrok-free.app/api/v1";
+const API_BASE_URL = "https://a5e8-221-149-4-114.ngrok-free.app/api/v1";
 
 export async function getOrders() {
   return (await httpGet(`${API_BASE_URL}/members`))?.json();
@@ -28,6 +28,10 @@ export async function logout() {
 }
 
 // actions:  "REQUEST" | "ACCEPT" | "REJECT" | "MEET" | "RESTART"
-export async function requestCarting(action, partnerId) {
+export async function carting(action, partnerId) {
   return await httpPatch(`${API_BASE_URL}/members`, { action, partnerId });
+}
+
+export async function getStatus() {
+  return (await httpGet(`${API_BASE_URL}/members/me`)).json();
 }

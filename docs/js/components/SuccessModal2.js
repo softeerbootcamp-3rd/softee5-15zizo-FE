@@ -1,5 +1,6 @@
 export function SuccessModal2(props) {
   return `
+  <div class="modal-container">
     <div class="modal modal-center success2">
     <div class="comment">
         <img src="./img/car.png" />
@@ -9,10 +10,11 @@ export function SuccessModal2(props) {
         </div>
     </div>
     <div class="button-container">
-        <button class="time-button colored" type="button">
+        <button class="time-button colored" type="button" data-component="reset-btn">
         서비스 계속 이용하기
         </button>
-        <button class="time-button" type="button">서비스 종료하기</button>
+        <button class="time-button" type="button" data-component="logout-btn">서비스 종료하기</button>
+    </div>
     </div>
     </div>
     `;
