@@ -27,7 +27,7 @@ export default function ProfileModal(props) {
   ];
 
   return `
-  <div class="modal-container">
+  <div class="modal-container" data-component="profile-modal-background">
     <div class="modal modal-bottom profile-modal">
       <p class="chip">상대방의 정보</p>
       <div class="profile-modal-content">

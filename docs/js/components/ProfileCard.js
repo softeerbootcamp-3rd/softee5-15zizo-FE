@@ -1,13 +1,17 @@
 export function ProfileCard(props) {
   return `
-          <div class="profile-container">
+          <div class="profile-container" data-component="open-modal" data-order-id="${
+            props.id
+          }">
               <div class="profile-info">
                   <div class="profile-img-container"></div>
                   <div class="name">${props.name}</div>
                   <div class="profile-button-container">
-                  <button class="profile-button ${
-                    props.color === "blue" ? "blue" : ""
-                  }">카팅하기</button>
+                  <button data-component="carting-request" data-order-id="${
+                    props.id
+                  }" class="profile-button ${
+    props.color === "blue" ? "blue" : ""
+  }">카팅하기</button>
                   </div>
               </div>
               <div class="profile-line"></div>
