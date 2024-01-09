@@ -513,7 +513,7 @@ div.gender-container {
 }
 
 .profile-container-backround {
-  max-width: 340px;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
   justify-items: center;
@@ -741,7 +741,7 @@ div.gender-container {
   position: fixed;
   left: 50%;
   bottom: 10%;
-  transform: translateX(-50%);
+  transform: translate(-50%, 50%);
   border-radius: 16px;
   border: none;
   background: #fff;
@@ -1093,4 +1093,17 @@ p.chip {
     #1f8aff 100.18%
   );
   color: white;
+}
+
+.gps-btn {
+  position: fixed;
+  right: 25px;
+  bottom: 10%;
+  border-radius: 10px;
+  padding: 7px;
+  z-index: 5;
+  width: 40px;
+  transform: translateY(50%);
+  background: #fff;
+  box-shadow: 0px 2px 48px 0px rgba(0, 0, 0, 0.08);
 }
