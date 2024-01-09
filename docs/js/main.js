@@ -7,6 +7,7 @@ export let globalPos = undefined;
 const geolocation = (pos) => {
   const location = { lat: pos.coords.latitude, lng: pos.coords.longitude };
   globalPos = location;
+  console.log("dispatch location");
   document.dispatchEvent(
     new CustomEvent("location", {
       detail: { location },
@@ -17,6 +18,6 @@ const geolocation = (pos) => {
 // 위치
 navigator.geolocation.watchPosition(geolocation, console.log, {
   enableHighAccuracy: true,
-  timeout: 3000,
+  timeout: 10000,
   maximumAge: 0,
 });

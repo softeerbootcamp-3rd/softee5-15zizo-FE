@@ -7,9 +7,11 @@ export function ProfileCard(props) {
                   <div class="profile-img-container"></div>
                   <div class="name">${props.nickname}</div>
                   <div class="profile-button-container">
-                  <button data-component="carting-request" data-order-id="${
-                    props.id
-                  }" class="profile-button ${
+                  <button ${
+                    props.status === "AVAILABLE" ? "" : 'style="display:none"'
+                  }data-component="carting-request" data-order-id="${
+    props.id
+  }" class="profile-button ${
     props.color === "blue" ? "blue" : ""
   }">카팅하기</button>
                   </div>
@@ -22,7 +24,7 @@ export function ProfileCard(props) {
                       <p>거리</p>
                   </div>
                   <div class="option-data">
-                      <p class="data">${props.distance}</p>
+                      <p class="data">${props.distance ?? "-"}</p>
                       <p class="unit">km</p>
                   </div>
                   </div>
