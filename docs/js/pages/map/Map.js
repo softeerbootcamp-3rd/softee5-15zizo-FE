@@ -5,6 +5,8 @@ import KakaoMap, {
   typeToMarker,
 } from "../../components/KakaoMap.js";
 import { ProfileCardBlue } from "../../components/ProfileCardBlue.js";
+import ProfileModal from "../../components/ProfileModal.js";
+import { ProfileList } from "../../components/ProfileList.js";
 
 export default class MapPage extends Component {
   setup() {
@@ -12,16 +14,20 @@ export default class MapPage extends Component {
       map: undefined,
       orders: new Map(),
       selectedOrderId: undefined,
+      modalOrderId: undefined,
+      showList: false,
+      requestOrderId: undefined,
     };
   }
 
   template() {
     const order = this.state.orders.get(this.state.selectedOrderId);
+    const modalOrder = this.state.orders.get(this.state.modalOrderId);
     return `
       <div class="map-page-container">
         <div data-component="map-container" class="map-container">
         </div>
-        <button class="list-button">목록 보기</button>
+        <button data-component="list-btn" class="list-button">목록 보기</button>
         ${
           order === undefined
             ? ""
@@ -30,13 +36,90 @@ export default class MapPage extends Component {
                 name: order.id,
               })}</div>`
         }
+        ${
+          !this.state.showList
+            ? ""
+            : ProfileList({ orders: Array.from(this.state.orders.values()) })
+        }
+        ${
+          modalOrder === undefined
+            ? ""
+            : ProfileModal({
+                name: modalOrder.id,
+                tags: ["asdf", "asdf"],
+                distance: 12,
+                age: 10,
+                gender: "F",
+              })
+        }
       </div>
     `;
   }
 
   mounted() {
     this.initializeMap();
-    this.initialize;
+
+    // carting buttons
+    const requestCartingBtns = this.target.querySelectorAll(
+      '[data-component="carting-request"]'
+    );
+    for (const btn of requestCartingBtns) {
+      const orderId = btn.getAttribute("data-order-id");
+      if (orderId === null) return;
+      btn.onclick = (e) => {
+        // todo: implement this
+        console.log("request", orderId);
+        e.stopPropagation();
+        this.setState({ requestOrderId: parseInt(orderId) });
+      };
+    }
+
+    // open modal from blue profile card
+    const openModalBtns = this.target.querySelectorAll(
+      '[data-component="open-modal"]'
+    );
+    for (const btn of openModalBtns) {
+      const orderId = btn.getAttribute("data-order-id");
+      if (orderId === null) return;
+      btn.onclick = (e) => {
+        e.stopPropagation();
+        this.setState({ modalOrderId: parseInt(orderId) });
+      };
+    }
+
+    // close modal
+    const closeModalBtn = this.target.querySelector(
+      "button#profile-modal-close-btn"
+    );
+    if (closeModalBtn)
+      closeModalBtn.onclick = () => this.setState({ modalOrderId: undefined });
+
+    // list button
+    const listBtn = this.target.querySelector('[data-component="list-btn"]');
+    listBtn.onclick = () => this.setState({ showList: true });
+
+    // modal list close
+    const listModalClose = this.target.querySelector(
+      '[data-component="profile-list-modal-background"]'
+    );
+    if (listModalClose) {
+      listModalClose.onclick = (e) => {
+        if (e.target === listModalClose) {
+          this.setState({ showList: false });
+        }
+      };
+    }
+
+    // close profile modal
+    const profileModalClose = this.target.querySelector(
+      '[data-component="profile-modal-background"]'
+    );
+    if (profileModalClose)
+      profileModalClose.onclick = (e) => {
+        if (e.target === profileModalClose) {
+          this.setState({ modalOrderId: undefined });
+        }
+      };
   }
 
   async onInterval() {
