@@ -1,3 +1,5 @@
+import { ProfileButton } from "./ProfileButton.js";
+
 export function RequiredModal(props) {
   return `
     <div class="modal-container clear">
@@ -13,11 +15,7 @@ export function RequiredModal(props) {
             <img class="time-img" src="./img/stopwatch.png" />
             <p>23</p>
         </div>
-        <div class="compact-profile">
-            <div class="compact-profil-img"></div>
-            <p>${props.name}님의 프로필</p>
-            <img class="arrow-right" src="./img/arrow_right.svg" />
-        </div>
+        ${ProfileButton(props)}
         </div>
         <div style="width: 100%">
         <button class="time-button colored" type="button">수락</button>
