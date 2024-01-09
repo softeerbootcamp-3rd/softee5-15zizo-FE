@@ -59,7 +59,10 @@ export default class CompanyStage extends Component {
     const btn = this.target.querySelector('[data-component="next-btn"]');
     btn.onclick = () => {
       if (!complete) return;
-      this.props.proceed({ company: this.state.company });
+      this.props.proceed({
+        hasCompany: companyToBoolean(this.state.company),
+        companyInfo: getCompanyInfo(this.state.company, this.state.companyInfo),
+      });
     };
 
     const input = document.querySelector('[data-component="info-input"]');
@@ -69,4 +72,14 @@ export default class CompanyStage extends Component {
       };
     }
   }
+}
+
+function companyToBoolean(c) {
+  if (c === "single") return false;
+  return true;
+}
+
+function getCompanyInfo(c, info) {
+  if (c === "single") return null;
+  return info;
 }

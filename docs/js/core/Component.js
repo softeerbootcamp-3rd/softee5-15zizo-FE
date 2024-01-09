@@ -3,6 +3,7 @@ export default class Component {
   props;
   state;
   prevTemplate;
+  force;
 
   constructor(target, props) {
     this.target = target;
@@ -21,9 +22,13 @@ export default class Component {
   render() {
     const { target } = this;
 
-    const newNode = target.cloneNode(true);
-
     const currentTemplate = this.template().replace(/>\s+</g, "><");
+    if (this.force) {
+      this.target.innerHTML = currentTemplate;
+      this.force = false;
+    }
+
+    const newNode = target.cloneNode(true);
     newNode.innerHTML = currentTemplate;
 
     if (currentTemplate !== this.prevTemplate) {

@@ -3,7 +3,7 @@ import { getPage } from "./core/Router.js";
 
 export default class App extends Component {
   setup() {
-    this.state = { enabled: false };
+    this.state = { pageConstructor: getPage() };
   }
 
   template() {
@@ -16,9 +16,14 @@ export default class App extends Component {
     const container = this.target.querySelector('[data-component="container"]');
 
     // router change event
-    window.onhashchange = () => new (getPage())(container);
+    window.onhashchange = () => {
+      this.force = true;
+      this.setState({ pageConstructor: getPage() });
+    };
+
+    console.log(this.state);
 
     // render current route
-    new (getPage())(container);
+    new this.state.pageConstructor(container, {});
   }
 }

@@ -68,11 +68,11 @@ export default class DescriptionStage extends Component {
 
     const btn = this.target.querySelector('[data-component="next-btn"]');
     btn.onclick = () => {
-      if (complete)
+      if (complete) {
         this.props.proceed({
-          choiceIndex: this.state.choice,
-          choiceText: this.state.text,
+          info: getText(this.state.choice, this.state.text),
         });
+      }
     };
 
     const modal = this.target.querySelector('[data-component="modal"]');
@@ -113,5 +113,10 @@ const choices = [
 
 function choiceToString(choice) {
   if (choice === -1) return "간단한 소개를 입력해주세요";
+  return choices[choice];
+}
+
+function getText(choice, fallback) {
+  if (choice === -1) return fallback;
   return choices[choice];
 }

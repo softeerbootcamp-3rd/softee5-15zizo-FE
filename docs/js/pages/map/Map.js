@@ -12,11 +12,13 @@ export default class MapPage extends Component {
   setup() {
     this.state = {
       map: undefined,
+      location: undefined,
       orders: new Map(),
       selectedOrderId: undefined,
       modalOrderId: undefined,
       showList: false,
       requestOrderId: undefined,
+      userMarker: undefined,
     };
   }
 
@@ -28,6 +30,9 @@ export default class MapPage extends Component {
         <div data-component="map-container" class="map-container">
         </div>
         <button data-component="list-btn" class="list-button">목록 보기</button>
+        <img data-component="gps-btn" class="gps-btn" src="/img/gps.svg" ${
+          this.state.selectedOrderId ? 'style="margin-bottom:160px"' : ""
+        }/>
         ${
           order === undefined
             ? ""
@@ -56,8 +61,44 @@ export default class MapPage extends Component {
     `;
   }
 
+  updateLocation(pos) {
+    if (this.state.map === undefined) return;
+    const location = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+
+    if (this.state.userMarker === undefined) {
+      // create user marker
+      const marker = new kakao.maps.CustomOverlay({
+        position: new kakao.maps.LatLng(0, 0),
+        content: createCustomMarker(),
+        xAnchor: 0.5,
+        yAnchor: 0.5,
+      });
+
+      marker.setMap(this.state.map);
+      this.setState({ userMarker: marker, location });
+      return;
+    }
+
+    this.setState({ location });
+  }
+
   mounted() {
     this.initializeMap();
+
+    // current location
+    if (this.state.userMarker)
+      this.state.userMarker.setPosition(
+        new kakao.maps.LatLng(this.state.location.lat, this.state.location.lng)
+      );
+    const gpsBtn = this.target.querySelector('[data-component="gps-btn"]');
+    if (gpsBtn && this.state.map && this.state.location)
+      gpsBtn.onclick = () =>
+        this.state.map.setCenter(
+          new kakao.maps.LatLng(
+            this.state.location.lat,
+            this.state.location.lng
+          )
+        );
 
     // carting buttons
     const requestCartingBtns = this.target.querySelectorAll(
@@ -136,7 +177,9 @@ export default class MapPage extends Component {
       const oldOrder = newOrders.get(order.id);
       if (oldOrder !== undefined) {
         // 마커 위치 수정
-        oldOrder.marker.setPosition(new kakao.maps.LatLng(order.x, order.y));
+        oldOrder.marker.setPosition(
+          new kakao.maps.LatLng(order.location.lat, order.location.lng)
+        );
         continue;
       }
 
@@ -147,7 +190,7 @@ export default class MapPage extends Component {
 
       // 새로 생성
       const marker = new kakao.maps.CustomOverlay({
-        position: new kakao.maps.LatLng(order.x, order.y),
+        position: new kakao.maps.LatLng(order.location.lat, order.location.lng),
         content: markerNode,
         xAnchor: 0.5,
         yAnchor: 0.5,
@@ -211,5 +254,16 @@ export default class MapPage extends Component {
         order.marker.setZIndex(1);
       }
     }
+
+    // 위치
+    navigator.geolocation.watchPosition(
+      (p) => this.updateLocation(p),
+      console.log,
+      {
+        enableHighAccuracy: true,
+        timeout: 3000,
+        maximumAge: 0,
+      }
+    );
   }
 }

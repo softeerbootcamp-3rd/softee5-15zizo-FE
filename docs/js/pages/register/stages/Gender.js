@@ -40,7 +40,12 @@ export default class GenderStage extends Component {
     const btn = this.target.querySelector('[data-component="next-btn"]');
     btn.onclick = () => {
       if (!complete) return;
-      this.props.proceed({ gender: this.state.gender });
+      this.props.proceed({ gender: genderToString(this.state.gender) });
     };
   }
+}
+
+function genderToString(g) {
+  if (g === "M") return "MALE";
+  return "FEMALE";
 }
