@@ -10,6 +10,13 @@
   </head>
   <body>
     <div id="splash" class="intro-splash"><img src="/img/logo.svg"></img></div>
+    <script>
+      // splash
+      const splash = document.getElementById("splash");
+      splash.addEventListener("animationend", () => {
+        splash.style.display = "none";
+      });
+    </script>
     <div id="app"></div>
     <script src="./js/main.js" type="module"></script>
   </body>

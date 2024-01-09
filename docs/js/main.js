@@ -20,9 +20,3 @@ navigator.geolocation.watchPosition(geolocation, console.log, {
   timeout: 3000,
   maximumAge: 0,
 });
-
-// splash
-const splash = document.getElementById("splash");
-splash.addEventListener("animationend", () => {
-  splash.style.display = "none";
-});
