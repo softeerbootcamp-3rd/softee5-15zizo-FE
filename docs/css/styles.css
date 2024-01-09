@@ -1,5 +1,5 @@
 .intro-splash {
-  animation: splash-animation 5s ease-out !important;
+  animation: splash-animation 1s ease-out !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,7 +14,7 @@
   0% {
     opacity: 1;
   }
-  90% {
+  80% {
     opacity: 1;
   }
   100% {
