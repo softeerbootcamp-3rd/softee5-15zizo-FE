@@ -13,8 +13,17 @@ export default class AgeStage extends Component {
           <p class="question">카팅님의 나이는 어떻게 되시나요?</p>
         </div>
         <div class="age-slider">
-          <p>${this.state.age}</p>
-          <input data-component="slider" type="range" min="1" max="100" value="25" step="1" />
+          <div class="age">
+            <p>${this.state.age}</p>
+          </div>
+          <input data-component="slider" class="slider" type="range" min="1" max="100" value="25" step="1" />
+          <div class="age-scale">
+          ${scale.map(() => `<div class="scale"></div>`).join("")}
+          </div>
+          <div class="age-scale scale-number">
+          ${scale.map((v) => `<p>${v}</p>`).join("")}
+          </div>
+          </div>
         </div>
       </div>
       <div class="next-button-container">
@@ -39,3 +48,5 @@ export default class AgeStage extends Component {
     };
   }
 }
+
+const scale = [1, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
