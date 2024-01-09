@@ -5,7 +5,7 @@ export function ProfileCard(props) {
           }">
               <div class="profile-info">
                   <div class="profile-img-container"></div>
-                  <div class="name">${props.name}</div>
+                  <div class="name">${props.nickname}</div>
                   <div class="profile-button-container">
                   <button data-component="carting-request" data-order-id="${
                     props.id
@@ -42,7 +42,10 @@ export function ProfileCard(props) {
                       <p>동행여부</p>
                   </div>
                   <div class="option-data">
-                      <p class="data">${props.company}</p>
+                      <p class="data">${companyToString(
+                        props.hasCompany,
+                        props.companyInfo
+                      )}</p>
                   </div>
                   </div>
                   <div class="profile-option">
@@ -51,10 +54,20 @@ export function ProfileCard(props) {
                       <p>성별</p>
                   </div>
                   <div class="option-data">
-                      <p class="data">${props.gender}</p>
+                      <p class="data">${genderToString(props.gender)}</p>
                   </div>
                   </div>
               </div>
           </div>
       `;
+}
+
+export function companyToString(c, cs) {
+  if (c) return cs;
+  return "없음";
+}
+
+export function genderToString(g) {
+  if (g === "FEMALE") return "여성";
+  return "남성";
 }

@@ -1,4 +1,5 @@
 import Component from "../../../core/Component.js";
+import { globalPos } from "../../../main.js";
 import { postProfile } from "../../../utils/api.js";
 
 export default class ConsentLocationStage extends Component {
@@ -51,24 +52,31 @@ export default class ConsentLocationStage extends Component {
     };
 
     if (this.state.complete) {
-      // 현재 위치 가져오기
-      navigator.geolocation.getCurrentPosition((position) => {
-        pos.lat = position.coords.latitude;
-        pos.lng = position.coords.longitude;
+      const job = async (pos) => {
+        const res = await postProfile({
+          ...this.props.data,
+          location: { lat: pos.lat, lng: pos.lng },
+        });
 
-        // api 전송
-        (async () => {
-          const res = await postProfile({
-            ...this.props.data,
-            location: { lat: pos.lat, lng: pos.lng },
-          });
+        if (res === undefined) {
+          // api 전송 실패 시 버튼 활성화
+          this.setState({ complete: false });
+        } else this.props.proceed();
+      };
 
-          if (res === undefined) {
-            // api 전송 실패 시 버튼 활성화
-            this.setState({ complete: false });
-          } else this.props.proceed();
-        })();
-      });
+      if (globalPos === undefined) {
+        // 현재 위치 가져오기
+        navigator.geolocation.getCurrentPosition((position) => {
+          const pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          };
+          // api 전송
+          job(pos);
+        });
+      } else {
+        job(globalPos);
+      }
     }
   }
 }
