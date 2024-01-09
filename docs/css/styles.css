@@ -1186,3 +1186,147 @@ p.chip {
     }
   }
 }
+
+.list-container {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.keyword-list-outer {
+  display: flex;
+  overflow: auto;
+  height: 30%;
+  flex: 1 1 30%;
+}
+
+.keyword-list-container {
+  display: flex;
+  flex-direction: row;
+  padding: 20px 26px 20px 20px;
+  width: 100%;
+  height: 0;
+  align-items: flex-start;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  gap: 12px 8px;
+
+  & .chips {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-self: stretch;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+div.chip {
+  display: flex;
+  padding: 4px 8px 4px 5px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  color: var(--Black-DarkGrey, #424242);
+  font-family: SF Pro;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 510;
+  line-height: 16px; /* 114.286% */
+  letter-spacing: 0.14px;
+  gap: 2px;
+
+  & > img {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+.unchecked {
+  border: 2px solid var(--Black-100, #efefef);
+}
+
+.checked {
+  border: 2px solid var(--Blue-one, #1c81f8);
+}
+
+.modal-up {
+  top: 2%;
+  right: 0;
+  left: 0;
+  margin: auto;
+  width: 90%;
+  height: 296px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  animation: none;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.success {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  height: 150px;
+  padding: 12px 20px;
+
+  & .success-comment-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    & > img {
+      width: 28px;
+      height: 28px;
+    }
+
+    & > p {
+      color: rgba(0, 0, 0, 0.6);
+      font-family: Pretendard;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 20px; /* 166.667% */
+    }
+
+    & .bold-success {
+      color: rgba(0, 0, 0, 0.8);
+      font-family: Pretendard;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 20px; /* 125% */
+    }
+  }
+
+  & .success-modal-button-container {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+
+    & .success-modal-button {
+      display: flex;
+      padding: 8px 40px;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+      background: #b0d5ff;
+      color: #268dff;
+    }
+
+    & .blue {
+      gap: 4px;
+      background: #268dff;
+      color: white;
+    }
+  }
+}
