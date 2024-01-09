@@ -28,7 +28,9 @@ export default class RegisterPage extends Component {
       this.state.step > 0 && this.state.step < this.stages.length - 1;
     return `
       <div class="register-outer-container">
-        <div class="top-app-bar"></div>
+        <div class="top-app-bar">
+          <img src="./img/arrow_left.svg">
+        </div>
         <div class="progress-bar" style="visibility:${
           showProgress ? "visible" : "hidden"
         }">

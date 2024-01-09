@@ -11,10 +11,12 @@ export default class NameRegister extends Component {
   template() {
     return `
             <div class="register-content">
-                <div class="question-container">
-                    <p class="question">이름이 무엇인가요?</p>
+                <div class="nickname-container">
+                    <p class="nickname-bold">닉네임을 설정해주세요</p>
+                    <div>
                     <p class="description">저장 후엔 변경할 수 없습니다.</p>
-                    <p class="bold">프로필에 표시되는 이름입니다.</p>
+                    <p class="description">프로필에 표시되는 이름입니다.</p>
+                    </div>
                 </div>
                 <div class="input-name-container">
                     <input data-component="name-input" class="input-name" type="search" name="name" 
