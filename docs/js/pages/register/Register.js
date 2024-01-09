@@ -50,7 +50,7 @@ export default class RegisterPage extends Component {
         // 마지막 단계
         if (this.state.step === this.stages.length - 1) {
           // 성공시 화면 전환
-          window.location.href = "/";
+          window.location.hash = "/";
           return;
         }
 
