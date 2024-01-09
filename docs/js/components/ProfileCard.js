@@ -5,7 +5,7 @@ export function ProfileCard(props) {
           }">
               <div class="profile-info">
                   <div class="profile-img-container"></div>
-                  <div class="name">${props.id}</div>
+                  <div class="name">${props.name}</div>
                   <div class="profile-button-container">
                   <button data-component="carting-request" data-order-id="${
                     props.id
