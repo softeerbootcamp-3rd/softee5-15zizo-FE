@@ -333,7 +333,7 @@ export default class MapPage extends Component {
       }
 
       // idle -> 응답 -> 응답 모달
-      if (oldStatus === "AVAILABLE" && newStatus === "RESPONDING") {
+      if (oldStatus !== "RESPONDING" && newStatus === "RESPONDING") {
         this.setState({
           requiredTime: 30,
           requiredTimer: setInterval(
