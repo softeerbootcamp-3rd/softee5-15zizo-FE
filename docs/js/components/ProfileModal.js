@@ -5,7 +5,7 @@ export default function ProfileModal(props) {
     {
       icon: "./img/option_car.svg",
       key: "거리",
-      value: props.distance,
+      value: props.distance ?? "-",
       unit: "km",
     },
     {
