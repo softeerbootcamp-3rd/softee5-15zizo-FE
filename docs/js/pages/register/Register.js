@@ -33,7 +33,11 @@ export default class RegisterPage extends Component {
     return `
       <div class="register-outer-container">
         <div class="top-app-bar">
-          ${this.state.step > 1 ? '<img src="./img/arrow_left.svg">' : ""}
+          ${
+            this.state.step > 1
+              ? '<img data-component="before-btn" src="./img/arrow_left.svg">'
+              : ""
+          }
         </div>
         <div class="progress-bar" style="visibility:${
           showProgress ? "visible" : "hidden"
@@ -50,6 +54,7 @@ export default class RegisterPage extends Component {
   mounted() {
     console.log(this.state.data);
     const container = this.target.querySelector('[data-component="container"]');
+
     // render stage
     new this.stages[this.state.step](container, {
       proceed: (data) => {
@@ -68,5 +73,12 @@ export default class RegisterPage extends Component {
       },
       data: this.state.data, // 이전에 작성한 데이터 활용할 수 있도록
     });
+
+    const beforeBtn = this.target.querySelector(
+      '[data-component="before-btn"]'
+    );
+    beforeBtn.onclick = () => {
+      this.setState({ step: this.state.step - 1 });
+    };
   }
 }
