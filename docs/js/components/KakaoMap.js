@@ -10,8 +10,8 @@ export default class KakaoMap extends Component {
 }
 
 export function typeToMarker(hasCar) {
-  if (hasCar) return "/img/marker_car.png";
-  return "/img/marker_walk.png";
+  if (hasCar) return "./img/marker_car.png";
+  return "./img/marker_walk.png";
 }
 
 export function createCustomMarker(order, onmousedown) {
