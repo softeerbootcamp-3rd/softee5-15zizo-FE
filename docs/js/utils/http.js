@@ -51,13 +51,13 @@ async function getRes(url, options) {
     const res = await fetch(url, options);
     if (res.status >= 403) {
       // 세션 없음
-      window.location.href = "/softee5-15zizo-FE/#/register";
+      window.location.href = "./#/register";
       return undefined;
     }
 
     return res;
   } catch (e) {
-    window.location.href = "/softee5-15zizo-FE/#/register";
+    window.location.href = "./#/register";
   }
   return undefined;
 }
