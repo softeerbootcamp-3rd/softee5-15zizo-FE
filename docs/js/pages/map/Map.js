@@ -401,7 +401,7 @@ export default class MapPage extends Component {
 
       const options = {
         center: new kakao.maps.LatLng(33.450701, 126.570667),
-        level: 3,
+        level: 8,
       };
 
       const mapObj = new kakao.maps.Map(container, options);
