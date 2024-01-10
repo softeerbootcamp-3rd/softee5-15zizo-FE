@@ -28,9 +28,9 @@ export function getImgFromStatus(status) {
     case "REQUESTING":
     case "RESPONDING":
     case "MATCHED":
-      return "/img/marker_minimal_disabled.svg";
+      return "./img/marker_minimal_disabled.svg";
     case "ME":
-      return "/img/marker_me.svg";
+      return "./img/marker_me.svg";
   }
-  return "/img/marker_minimal.svg";
+  return "./img/marker_minimal.svg";
 }
