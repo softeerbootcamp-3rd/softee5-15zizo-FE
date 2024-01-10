@@ -1,6 +1,5 @@
-import MainPage from "../pages/main/Main.js";
 import MapPage from "../pages/map/Map.js";
-import RegisterPage from "../pages/register/register.js";
+import RegisterPage from "../pages/register/Register.js";
 
 export function getPage() {
   const path = window.location.hash.replace("#", "");
