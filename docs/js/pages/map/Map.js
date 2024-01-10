@@ -360,11 +360,20 @@ export default class MapPage extends Component {
     // 현재 markers 복사
     const newOrders = new Map([...this.state.orders]);
 
+    // 전체 비활성화
+    for (const [k, v] of newOrders.entries()) {
+      v.status = "MATCHED";
+      newOrders.set(k, v);
+    }
+
     // orders에 해당하는 마커 지도에 추가
     for (const order of orders) {
       // 이미 존재할 경우 취소
       const oldOrder = newOrders.get(order.id);
       if (oldOrder !== undefined) {
+        // 상태 업데이트
+        newOrders.set(order.id, order);
+
         // 마커 위치 수정
         oldOrder.marker.setPosition(
           new kakao.maps.LatLng(order.location.lat, order.location.lng)
