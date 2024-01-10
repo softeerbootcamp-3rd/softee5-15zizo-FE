@@ -9,7 +9,6 @@ export default class AgeStage extends Component {
     return `
       <div class="register-content">
         <div class="question-container">
-          <p class="number">2/5</p>
           <p class="question">카팅님의 나이는 어떻게 되시나요?</p>
         </div>
         <div class="age-slider">
