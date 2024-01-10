@@ -147,9 +147,8 @@ export default class MapPage extends Component {
     if (resetBtn)
       resetBtn.onclick = () =>
         logout().then(() => {
-          document.location.href = "/softee5-15zizo-FE/#/register";
-          // force reload
-          document.location.reload();
+          document.getElementById("splash").style.display = "block";
+          document.location.href = "./#/register";
         });
 
     // logout btn
