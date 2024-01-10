@@ -66,7 +66,7 @@ export default class Keyword extends Component {
     const btn = document.querySelector('[data-component="next-btn"]');
     btn.onclick = () => {
       if (this.state.selected.length > 0) {
-        this.props.proceed({ keywords: this.state.selected.join(",") });
+        this.props.proceed({ info: this.state.selected.join(" ") });
       }
     };
   }
@@ -89,4 +89,26 @@ const keywordList = [
   "회",
   "술",
   "애월카페거리",
+  "협재",
+  "애월",
+  "우도",
+  "성산일출봉",
+  "오름",
+  "한라산",
+  "ENFP",
+  "ESFJ",
+  "ESFP",
+  "ENFJ",
+  "ENTJ",
+  "ENTP",
+  "ESTJ",
+  "ESTP",
+  "INFP",
+  "INFJ",
+  "INTJ",
+  "ISTJ",
+  "INTP",
+  "ISTP",
+  "ISFP",
+  "ISFJ",
 ];
