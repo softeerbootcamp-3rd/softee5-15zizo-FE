@@ -41,6 +41,10 @@ export default class MapPage extends Component {
     const matchOrder = this.state.orders.get(this.state.matchId);
     return `
       <div class="map-page-container">
+      <div class="map-header">
+        <img src="./img/logo_small.svg"/>
+        <img src="./img/profile_small.svg"/>
+      </div>
         <div data-component="map-container" class="map-container">
         </div>
         <button data-component="list-btn" class="list-button">목록 보기</button>
