@@ -87,22 +87,7 @@ export default class MapPage extends Component {
 
   updateLocation(e) {
     const location = e.detail.location;
-    if (this.state.map === undefined) return;
-
-    if (this.state.userMarker === undefined) {
-      // create user marker
-      const marker = new kakao.maps.CustomOverlay({
-        position: new kakao.maps.LatLng(0, 0),
-        content: createCustomMarker({ status: undefined }),
-        xAnchor: 0.5,
-        yAnchor: 0.5,
-      });
-
-      marker.setMap(this.state.map);
-      this.setState({ userMarker: marker, location });
-      return;
-    }
-
+    console.log("location event", location);
     this.setState({ location });
   }
 
@@ -193,11 +178,33 @@ export default class MapPage extends Component {
       this.rejectRequired();
     }
 
+    console.log(this.state);
     // current location
-    if (this.state.userMarker)
-      this.state.userMarker.setPosition(
-        new kakao.maps.LatLng(this.state.location.lat, this.state.location.lng)
-      );
+    if (this.state.map && this.state.location) {
+      if (!this.state.userMarker) {
+        // 현재 위치
+        const marker = new kakao.maps.CustomOverlay({
+          position: new kakao.maps.LatLng(
+            this.state.location.lat,
+            this.state.location.lng
+          ),
+          content: createCustomMarker({ status: "ME" }),
+          xAnchor: 0.5,
+          yAnchor: 0.5,
+        });
+
+        marker.setMap(this.state.map);
+        this.setState({ userMarker: marker });
+      } else {
+        this.state.userMarker.setPosition(
+          new kakao.maps.LatLng(
+            this.state.location.lat,
+            this.state.location.lng
+          )
+        );
+      }
+    }
+
     const gpsBtn = this.target.querySelector('[data-component="gps-btn"]');
     if (gpsBtn)
       gpsBtn.onclick = () => {
@@ -348,9 +355,9 @@ export default class MapPage extends Component {
           new kakao.maps.LatLng(order.location.lat, order.location.lng)
         );
 
-        oldOrder.marker
-          .getContent()
-          .setAttribute("src", getImgFromStatus(oldOrder.status));
+        // 상태에 따라 변경
+        const content = oldOrder.marker.getContent();
+        content.setAttribute("src", getImgFromStatus(oldOrder.status));
         continue;
       }
 
@@ -404,7 +411,8 @@ export default class MapPage extends Component {
       // 마커 데이터 받아오기
       this.onInterval();
 
-      // 위치
+      // location event listener
+      console.log("add events");
       document.addEventListener("location", (e) => this.updateLocation(e));
     }
 
@@ -412,13 +420,15 @@ export default class MapPage extends Component {
     for (const [id, order] of this.state.orders) {
       if (id === this.state.selectedOrderId) {
         order.marker.getContent().setAttribute("class", "marker marker-large");
-        order.marker.getContent().setAttribute("src", typeToMarker(order.type));
+        order.marker
+          .getContent()
+          .setAttribute("src", typeToMarker(order.hasCar));
         order.marker.setZIndex(3);
       } else {
         order.marker.getContent().setAttribute("class", "marker");
         order.marker
           .getContent()
-          .setAttribute("src", "/img/marker_minimal.svg");
+          .setAttribute("src", getImgFromStatus(order.status));
         order.marker.setZIndex(1);
       }
     }
