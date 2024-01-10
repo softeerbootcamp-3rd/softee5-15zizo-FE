@@ -147,7 +147,7 @@ export default class MapPage extends Component {
     if (resetBtn)
       resetBtn.onclick = () =>
         logout().then(() => {
-          document.getElementById("splash").style.display = "block";
+          document.getElementById("splash").style.display = "flex";
           document.location.href = "./#/register";
         });
 
