@@ -1,5 +1,5 @@
 import { httpDelete, httpGet, httpPatch, httpPost } from "./http.js";
-const API_BASE_URL = "https://a5e8-221-149-4-114.ngrok-free.app/api/v1";
+const API_BASE_URL = "https://cf5e-221-149-4-114.ngrok-free.app/api/v1";
 
 export async function getOrders() {
   return (await httpGet(`${API_BASE_URL}/members`))?.json();
