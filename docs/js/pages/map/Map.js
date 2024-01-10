@@ -140,7 +140,11 @@ export default class MapPage extends Component {
 
     // reset btn
     const resetBtn = this.target.querySelector('[data-component="finish-btn"]');
-    if (resetBtn) resetBtn.onclick = () => logout();
+    if (resetBtn)
+      resetBtn.onclick = () =>
+        logout().then(
+          (document.location.href = "/softee5-15zizo-FE/#/register")
+        );
 
     // logout btn
     const logoutBtn = this.target.querySelector(
