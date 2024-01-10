@@ -9,7 +9,6 @@ export default class GenderStage extends Component {
     return `
       <div class="register-content">
         <div class="question-container">
-          <p class="number">1/5</p>
           <p class="question">카팅님의 성별은 무엇인가요?</p>
         </div>
         <div class="two-option-container">

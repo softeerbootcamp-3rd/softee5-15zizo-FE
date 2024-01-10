@@ -12,14 +12,12 @@ export default class CompanyStage extends Component {
         ${
           this.state.company === "double"
             ? `<div class="question-container">
-                <p class="number">5/5</p>
                 <p class="question">동행자에 대한 간단한 정보를 입력해주세요</p>
               </div>
               <div class="input-name-container">
                 <input data-component="info-input" class="input-name" type="search" placeholder="간단한 정보를 입력해주세요" value="${this.state.companyInfo}"/>
               </div>`
             : `<div class="question-container">
-                <p class="number">5/5</p>
                 <p class="question">현재 동행 중이신가요?</p>
               </div>
               <div class="two-option-container">

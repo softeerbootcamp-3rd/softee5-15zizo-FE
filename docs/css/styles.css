@@ -428,9 +428,9 @@ fieldset {
 
   & .age {
     background-color: #2692fd;
-    width: 37px;
     border-radius: 8px;
-    padding-top: 3px;
+    width: 100px;
+    margin-bottom: 25px;
     display: flex;
     justify-content: center;
 
@@ -438,11 +438,11 @@ fieldset {
       color: #fff;
       text-align: center;
       font-family: Pretendard;
-      font-size: 16px;
+      font-size: 51.459px;
       font-style: normal;
       font-weight: 700;
-      line-height: 20px; /* 125% */
-      letter-spacing: -0.8px;
+      line-height: 64.324px; /* 125% */
+      letter-spacing: -2.573px;
     }
   }
 }

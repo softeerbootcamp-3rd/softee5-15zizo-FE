@@ -11,7 +11,6 @@ export default class CarStage extends Component {
     return `
         <div class="register-content">
             <div class="question-container">
-                <p class="number">5/5</p>
                 <p class="question">현재 차량으로 이동중이신가요?</p>
             </div>
             <div class="two-option-container">

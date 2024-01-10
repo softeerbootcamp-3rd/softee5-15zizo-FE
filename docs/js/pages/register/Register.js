@@ -29,7 +29,7 @@ export default class RegisterPage extends Component {
   template() {
     // 첫화면과 마지막 화면에서는 보여주지 않음
     const showProgress =
-      this.state.step > 0 && this.state.step < this.stages.length - 1;
+      this.state.step > 2 && this.state.step < this.stages.length - 1;
     return `
       <div class="register-outer-container">
         <div class="top-app-bar">
@@ -39,7 +39,7 @@ export default class RegisterPage extends Component {
           showProgress ? "visible" : "hidden"
         }">
           <div style="width:${
-            (this.state.step / (this.stages.length - 2)) * 100
+            ((this.state.step - 2) / (this.stages.length - 4)) * 100
           }%"></div>
         </div>
         <div data-component="container" class="register-inner-container"></div>
