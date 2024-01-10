@@ -326,6 +326,11 @@ export default class MapPage extends Component {
         });
       }
 
+      // 매치(임시 설정) -> idle -> 상태 초기화
+      if (oldStatus === "MATCHED" && newStatus("AVAILABLE")) {
+        this.setState({ matchId: undefined });
+      }
+
       // idle -> 응답 -> 응답 모달
       if (oldStatus === "AVAILABLE" && newStatus === "RESPONDING") {
         this.setState({
