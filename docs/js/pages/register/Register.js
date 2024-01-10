@@ -33,7 +33,7 @@ export default class RegisterPage extends Component {
     return `
       <div class="register-outer-container">
         <div class="top-app-bar">
-          <img src="./img/arrow_left.svg">
+          ${this.state.step > 1 ? '<img src="./img/arrow_left.svg">' : ""}
         </div>
         <div class="progress-bar" style="visibility:${
           showProgress ? "visible" : "hidden"
