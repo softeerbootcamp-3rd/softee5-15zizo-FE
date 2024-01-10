@@ -373,9 +373,6 @@ export default class MapPage extends Component {
       // 이미 존재할 경우 취소
       const oldOrder = newOrders.get(order.id);
       if (oldOrder !== undefined) {
-        // 상태 업데이트
-        newOrders.set(order.id, order);
-
         // 마커 위치 수정
         oldOrder.marker.setPosition(
           new kakao.maps.LatLng(order.location.lat, order.location.lng)
@@ -384,6 +381,9 @@ export default class MapPage extends Component {
         // 상태에 따라 변경
         const content = oldOrder.marker.getContent();
         content.setAttribute("src", getImgFromStatus(oldOrder.status));
+
+        // 상태 업데이트
+        newOrders.set(order.id, oldOrder);
         continue;
       }
 

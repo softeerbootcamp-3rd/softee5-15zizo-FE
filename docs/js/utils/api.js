@@ -2,6 +2,7 @@ import { httpDelete, httpGet, httpPatch, httpPost } from "./http.js";
 const API_BASE_URL = "https://60cf-218-145-117-91.ngrok-free.app/api/v1";
 
 export async function getOrders() {
+  return [];
   return (await httpGet(`${API_BASE_URL}/members`))?.json();
 }
 
@@ -33,5 +34,6 @@ export async function carting(action, partnerId) {
 }
 
 export async function getStatus() {
+  return { status: "AVAILABLE" };
   return (await httpGet(`${API_BASE_URL}/members/me`)).json();
 }
