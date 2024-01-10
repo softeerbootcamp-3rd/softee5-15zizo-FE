@@ -383,7 +383,7 @@ export default class MapPage extends Component {
         content.setAttribute("src", getImgFromStatus(oldOrder.status));
 
         // 상태 업데이트
-        newOrders.set(order.id, oldOrder);
+        newOrders.set(order.id, { ...order, marker: oldOrder.marker });
         continue;
       }
 
