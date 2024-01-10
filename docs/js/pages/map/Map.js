@@ -44,7 +44,7 @@ export default class MapPage extends Component {
         <div data-component="map-container" class="map-container">
         </div>
         <button data-component="list-btn" class="list-button">목록 보기</button>
-        <img data-component="gps-btn" class="gps-btn" src="/img/gps.svg" ${
+        <img data-component="gps-btn" class="gps-btn" src="./img/gps.svg" ${
           this.state.selectedOrderId ? 'style="margin-bottom:160px"' : ""
         }/>
         ${!matchOrder ? "" : SuccessModal(matchOrder)}

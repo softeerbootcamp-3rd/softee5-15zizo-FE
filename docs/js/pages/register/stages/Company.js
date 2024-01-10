@@ -26,13 +26,13 @@ export default class CompanyStage extends Component {
                 <div data-component="single" class="option ${
                   this.state.company === "single" ? "selected" : ""
                 }">
-                  <img src="/img/person_single.png" />
+                  <img src="./img/person_single.png" />
                   <p>혼자예요</p>
                 </div>
                 <div data-component="double" class="option ${
                   this.state.company === "double" ? "selected" : ""
                 }">
-                  <img src="/img/person_double.png" />
+                  <img src="./img/person_double.png" />
                   <p>둘이에요</p>
                 </div>
               </div>`

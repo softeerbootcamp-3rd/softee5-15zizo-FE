@@ -18,13 +18,13 @@ export default class CarStage extends Component {
                 <div data-component="car" class="option ${
                   this.state.vehicle === "car" ? "selected" : ""
                 }">
-                    <img src="/img/car.png" />
+                    <img src="./img/car.png" />
                     <p>차가 있어요</p>
                 </div>
                 <div data-component="foot" class="option ${
                   this.state.vehicle === "foot" ? "selected" : ""
                 }">
-                    <img src="/img/walking.png" />
+                    <img src="./img/walking.png" />
                     <p>뚜벅이에요</p>
                 </div>
             </div>
