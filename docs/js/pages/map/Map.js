@@ -39,6 +39,7 @@ export default class MapPage extends Component {
     const modalOrder = this.state.orders.get(this.state.modalOrderId);
     const requiredOrder = this.state.orders.get(this.state.requiredOrderId);
     const matchOrder = this.state.orders.get(this.state.matchId);
+    const isMatched = this.state.status === "MATCHED";
     return `
       <div class="map-page-container">
       <div class="map-header">
@@ -51,10 +52,9 @@ export default class MapPage extends Component {
         <img data-component="gps-btn" class="gps-btn" src="./img/gps.svg" ${
           this.state.selectedOrderId ? 'style="margin-bottom:160px"' : ""
         }/>
-        ${!matchOrder ? "" : SuccessModal(matchOrder)}
         ${
-          this.state.status === "MATCHED"
-            ? ""
+          isMatched
+            ? SuccessModal(matchOrder)
             : `${
                 order === undefined
                   ? ""
@@ -327,7 +327,7 @@ export default class MapPage extends Component {
       }
 
       // 매치(임시 설정) -> idle -> 상태 초기화
-      if (oldStatus === "MATCHED" && newStatus("AVAILABLE")) {
+      if (oldStatus === "MATCHED" && newStatus === "AVAILABLE") {
         this.setState({ matchId: undefined });
       }
 
