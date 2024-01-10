@@ -147,7 +147,8 @@ export default class MapPage extends Component {
       '[data-component="logout-btn"]'
     );
     if (logoutBtn)
-      logoutBtn.onclick = () => logout().then((document.location.href = "/"));
+      logoutBtn.onclick = () =>
+        logout().then((document.location.href = "/softee5-15zizo-FE/"));
 
     // required btns
     // accept
