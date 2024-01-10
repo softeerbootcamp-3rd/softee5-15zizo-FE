@@ -44,7 +44,7 @@ export default class MapPage extends Component {
       <div class="map-page-container">
       <div class="map-header">
         <img src="./img/logo_small.svg"/>
-        <img src="./img/profile_small.svg"/>
+        <img src="./img/profile_small.svg" data-component="finish-btn"/>
       </div>
         <div data-component="map-container" class="map-container">
         </div>
@@ -143,8 +143,10 @@ export default class MapPage extends Component {
         window.open(guideBtn.getAttribute("href"), "_blank");
 
     // reset btn
-    const resetBtn = this.target.querySelector('[data-component="finish-btn"]');
-    if (resetBtn)
+    const resetBtns = this.target.querySelectorAll(
+      '[data-component="finish-btn"]'
+    );
+    for (const resetBtn of resetBtns)
       resetBtn.onclick = () =>
         logout().then(() => {
           document.getElementById("splash").style.display = "flex";
