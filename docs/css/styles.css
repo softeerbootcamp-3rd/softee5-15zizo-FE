@@ -43,6 +43,7 @@
 }
 
 .modal-container {
+  animation: show-animation 0.5s;
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(5px);
   position: fixed;
@@ -60,6 +61,7 @@
 }
 
 .modal {
+  animation: show-animation 0.5s;
   background-color: white;
   position: absolute;
   border-radius: 20px;
@@ -93,6 +95,7 @@
 }
 
 .modal-center {
+  animation: show-animation 0.5s;
   top: 0;
   right: 0;
   left: 0;
@@ -105,7 +108,6 @@
   gap: 24px;
   border-radius: 20px;
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.2);
-  animation: none;
 }
 
 .carting-button {
@@ -188,6 +190,7 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .input-container {
+  animation: show-animation 0.5s;
   width: 100%;
   padding: 10px 20px;
 }
@@ -202,6 +205,7 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .register-content {
+  animation: show-animation 0.5s;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -215,6 +219,12 @@ input[type="search"]::-webkit-search-cancel-button {
   width: 100%;
   height: 100%;
   flex-direction: column;
+}
+
+p,
+img,
+input {
+  animation: show-animation 0.5s;
 }
 
 p.number {
@@ -574,10 +584,21 @@ div.gender-container {
   height: 164px;
   border-radius: 16px;
   background: linear-gradient(180deg, #376ef5 0%, rgba(255, 255, 255, 0) 100%);
+  animation: pop-in 0.3s ease-out;
 
   & > img {
     margin: 4px;
     width: 16px;
+  }
+}
+
+@keyframes pop-in {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0);
   }
 }
 
@@ -759,6 +780,7 @@ div.gender-container {
     padding: 12px 20px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 12px;
     overflow: auto;
   }
@@ -1241,6 +1263,10 @@ p.chip {
   }
 }
 
+button {
+  transition: background-color 0.3s ease-out;
+}
+
 .list-container {
   display: block;
   height: 100%;
@@ -1284,6 +1310,7 @@ div.chip {
   align-items: center;
   border-radius: 15px;
   color: var(--Black-DarkGrey, #424242);
+  transition: border 0.3s ease-out;
   font-family: SF Pro;
   font-size: 14px;
   font-style: normal;

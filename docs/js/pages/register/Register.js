@@ -1,21 +1,25 @@
 import Component from "../../core/Component.js";
 import AgeStage from "./stages/Age.js";
-import DescriptionStage from "./stages/Description.js";
 import GenderStage from "./stages/Gender.js";
 import CompanyStage from "./stages/Company.js";
 import NameRegister from "./stages/Name.js";
 import CarStage from "./stages/Car.js";
 import ConsentLocationStage from "./stages/ConsentLocation.js";
+import Keyword from "./stages/Keyword.js";
+import Splash1 from "./stages/Splash1.js";
+import Splash2 from "./stages/Splash2.js";
 
 export default class RegisterPage extends Component {
   setup() {
     this.state = { step: 0, data: {} };
     // 예시
     this.stages = [
+      Splash1,
+      Splash2,
       NameRegister,
       GenderStage,
       AgeStage,
-      DescriptionStage,
+      Keyword,
       CarStage,
       CompanyStage,
       ConsentLocationStage,

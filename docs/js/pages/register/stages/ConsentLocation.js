@@ -11,8 +11,6 @@ export default class ConsentLocationStage extends Component {
 
   template() {
     return `
-            <link rel="stylesheet" href="./css/styles.css" />
-
             <div class="stage-container">
             <div class="provide-location-container">
                 <p>카팅에 오신걸 환영해요!</p>
